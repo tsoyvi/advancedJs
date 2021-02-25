@@ -25,6 +25,12 @@ class ProductList {
   // }
   //
 
+
+
+  // Правильный ответ:
+  // return this.#goods.reduce((sum, { price}) => sum + price, 0);
+
+  // Мой вариант => изучить reduce
   goodsTotalPrice() {
     let summ = 0;
     this.#goods.forEach((good) => {

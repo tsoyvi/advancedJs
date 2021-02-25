@@ -21,7 +21,8 @@ class Hamburger {
 
     // не знаю можно ли обращаться из class-ов к html и брать из тегов данные
     // но попробовал сделать  
-    // Получилось не очень... Будем учиться )))
+    //
+    //В общем Получилось не очень... Будем учиться )))
 
 
     /**
@@ -51,27 +52,34 @@ class Hamburger {
     }
 
     getToppingsListText() {
-       let str = "";
+        let str = "";
         this.getToppings().forEach(el => {
-            if (str!="") str +=" и ";
+            if (str != "") str += " и ";
             str += el.title;
         });
-        return str!=""  ? str : 'без специй' ;
+        return str != "" ? str : 'без специй';
     }
 
 
     /**
      * Пробегаемся по всем input, на основе выбранных выбираем объект из полученных коллекций с сервера
+     * Переписать на document.querySelectorAll("[name =]:checked")
      */
     searchCheckedEl(name, obj) {
-        let inputEl = document.getElementsByName(name);
-        for (let i = 0; i < inputEl.length; i++) {
+        // Старый г-о код
+        /* let inputEl = document.getElementsByName(name);
+              for (let i = 0; i < inputEl.length; i++) {
             if (inputEl[i].checked) {
                 return obj[inputEl[i].dataset.index];
             };
         };
-        return { id: 0, title: 'НЕ выбрано!', price: 0, calorie: 0 };
+        */ //***/ Новый г-о код ))) */
+        let inputEl = document.querySelector(`input[name="${name}"]:checked`);
+        if (inputEl) return obj[inputEl.dataset.index];
+
+        return { id: 0, title: 'Выберите состав', price: 0, calorie: 0 };
     }
+
 
     /**
      * Узнать выбранный размер гамбургера 
@@ -183,13 +191,13 @@ class Hamburger {
 
 
 
-    eventListener() { // Не знаю как лучше сделать....
+    eventListener() { // назначаем слушатель событий на все наши инпуты  /// Не знаю как лучше сделать....
 
         let element = document.querySelectorAll("input");
         element.forEach(el => {
 
 
-            el.addEventListener("click", event => {
+            el.addEventListener("click", event => { // назначаем события на приправы // наверное лучше сделать отдельный querySelectorAll() на них, но это я думаю замедлит приложение
 
                 if (event.target.checked && event.target.name == "burgerTopping") {
                     this.addTopping(this.toppingGoods[event.target.dataset.index]);
@@ -205,7 +213,8 @@ class Hamburger {
         });
     }
 
-
+    //  лучше использовать getElementsByName() или document.querySelectorAll("[name =]") ?
+    // ответ: лучше  document.querySelectorAll("[name =]") более универсальная и современная
 
     renderHtmlResult() {
         return `Выбран ${this.getBurgerSize().title} гамбургер ${this.getStuffing().title}, специи - ${this.getToppingsListText()} <br>
