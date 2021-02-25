@@ -1,0 +1,50 @@
+body {
+    margin: 0 auto;
+}
+
+
+.select-burger {
+    margin: 5px;
+}
+
+.filling-burger {
+    display: none;
+}
+
+.seasoning-burger {
+    display: none;
+}
+
+.hBurgerSize {
+
+}
+
+.select-size {
+    background-color: rgb(153, 247, 248);
+    padding: 5px 15px 15px 15px;
+    text-align: center;
+}
+
+.select-stuffing {
+    background-color: rgb(195, 235, 177);
+    padding: 5px 15px 15px 15px;
+    text-align: center;
+}
+
+
+.select-topping {
+    background-color: rgb(250, 232, 211);
+    padding: 5px 15px 15px 15px;
+    text-align: center;
+}
+
+
+.result {
+    background-color: rgb(147, 240, 197);
+    padding: 5px 15px 15px 15px;
+    text-align: center;
+    
+    color: blue;
+    font-size: 1.1em;
+    font-weight: bold;
+}
