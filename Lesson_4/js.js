@@ -21,6 +21,7 @@ let divEl2 = document.querySelector(".answer2");
 //1 задание
 divEl.innerText = pEl.innerText.replaceAll("\'", "\""); //заменяем все одинарные кавычки на двойные
 
+
 //2 задание
 //divEl2.innerText = pEl.innerText.replaceAll(/^'|(\s)'|'(\s)|'$/g, '$1"$2'); //заменяем все одинарные кавычки на двойные кроме aren't одинарная кавычка не заменялась на двойную
 divEl2.innerText = pEl.innerText.replaceAll(/\B'|'\B/g, "\""); //заменяем все одинарные кавычки на двойные кроме aren't одинарная кавычка не заменялась на двойную
@@ -28,7 +29,6 @@ divEl2.innerText = pEl.innerText.replaceAll(/\B'|'\B/g, "\""); //заменяе�
 
 
 // 3 задание
-
 const inputLettersCheck = (el) => {
     let regexp = /^[A-zА-яЁё]+$/gi;
     return regexp.test(el.value);
@@ -60,7 +60,6 @@ const inputErr = (el) => {
 const inputOk = (el) => {
     el.classList.remove("error");
 }
-
 
 
 const btnEvent = (event) => {
