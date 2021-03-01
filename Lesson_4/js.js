@@ -18,55 +18,82 @@ let divEl = document.querySelector(".answer1");
 let divEl2 = document.querySelector(".answer2");
 
 
-//1
+//1 задание
 divEl.innerText = pEl.innerText.replaceAll("\'", "\""); //заменяем все одинарные кавычки на двойные
 
-//2
+//2 задание
 //divEl2.innerText = pEl.innerText.replaceAll(/^'|(\s)'|'(\s)|'$/g, '$1"$2'); //заменяем все одинарные кавычки на двойные кроме aren't одинарная кавычка не заменялась на двойную
 divEl2.innerText = pEl.innerText.replaceAll(/\B'|'\B/g, "\""); //заменяем все одинарные кавычки на двойные кроме aren't одинарная кавычка не заменялась на двойную
 
 
 
-// 3
+// 3 задание
 
-const inputNameCheck = (el) => {
-    console.log(el.value);
-
-    let  regexp = /^[A-zА-яЁё]+$/gi;
-    console.log((regexp.test(el.value)));
-
+const inputLettersCheck = (el) => {
+    let regexp = /^[A-zА-яЁё]+$/gi;
+    return regexp.test(el.value);
 }
 
+
+// собрал регулярку на основе примера из инета
 const inputPhoneCheck = (el) => {
-    console.log(el.value);
+    let regexp = /^\+7\([\d]{3}\)[\d]{3}-[\d]{4}$/;
+    return regexp.test(el.value);
 }
 
+
+// google - очень помог )))
 const inputEmailCheck = (el) => {
-    console.log(el.value);
+    let regexp = /^[\w-\.]+@[\w-]+\.[a-z]{2,4}$/ig;
+    return regexp.test(el.value);
 }
 
-/*
-const inputTextareaCheck = (el) => {
-   
+
+const inputErr = (el) => {
+    el.classList.add("error");
+    let timer = setTimeout(() => {
+        alert("Ошибка в поле - " + el.parentElement.innerText);
+    }, 0);
 }
-*/
+
+
+const inputOk = (el) => {
+    el.classList.remove("error");
+}
+
+
 
 const btnEvent = (event) => {
     let inputNameEl = document.querySelector('[name="name"]');
     let inputPhoneEl = document.querySelector('[name="phone"]');
     let inputEmailEl = document.querySelector('[name="email"]');
 
-    if (inputNameCheck(inputNameEl)) { alert("Ok"); }
+    if (!inputLettersCheck(inputNameEl)) {
+        inputErr(inputNameEl);
+        return;
+    } else {
+        inputOk(inputNameEl);
+    }
 
-    if (inputPhoneCheck(inputPhoneEl)) { alert("Ok"); }
+    if (!inputPhoneCheck(inputPhoneEl)) {
+        inputErr(inputPhoneEl);
+        return;
+    } else {
+        inputOk(inputPhoneEl);
+    }
 
-    if (inputEmailCheck(inputEmailEl)) { alert("Ok"); }
+    if (!inputEmailCheck(inputEmailEl)) {
+        inputErr(inputEmailEl);
+        return;
+    } else {
+        inputOk(inputPhoneEl);
+    }
 
-
+    // если ошибок нет то отправляем форму
+    document.querySelector(".form").submit();
 
 }
 
 
 let btnEl = document.querySelector(".button-send");
 btnEl.addEventListener("click", btnEvent);
-

@@ -14,8 +14,6 @@
     margin-top: 15px;
     padding: 10px;
     background-color:rgb(240, 225, 218);
-   /* display: flex;
-    justify-content: flex-start;*/
     display: inline-block;
     text-align: center;
 }
@@ -38,4 +36,8 @@ textarea {
     width: 700px;
     height: 150px;
     margin: 10px;
+}
+
+.error {
+    background-color: red; 
 }
