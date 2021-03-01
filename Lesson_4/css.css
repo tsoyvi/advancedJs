@@ -9,3 +9,33 @@
 .answer2 {
     background-color:rgb(140, 168, 247);
 }
+
+.form {
+    margin-top: 15px;
+    padding: 10px;
+    background-color:rgb(240, 225, 218);
+   /* display: flex;
+    justify-content: flex-start;*/
+    display: inline-block;
+    text-align: center;
+}
+
+.div-input {
+    display: flex;
+    align-items: flex-start;
+}
+
+label {
+    padding: 10px;
+    display: flex;
+}
+
+input {
+    margin: 0px 10px 10px 10px;
+}
+
+textarea {
+    width: 700px;
+    height: 150px;
+    margin: 10px;
+}
