@@ -36,20 +36,34 @@ class ProductList {
   #goods;
   #allProducts;
 
-  constructor(container = '.products') {
+  constructor(cart, container = '.products') {
     this.container = container;
     this.#goods = [];
     this.#allProducts = [];
+    this.cart = cart;
 
     this.#getProducts()
       .then((data) => {
 
-        console.log (data);
+        console.log(data);
 
         this.#goods = [...data];
         this.#render();
       });
+
+    this.#init();
   }
+
+
+  #init() {
+    document.querySelector(this.container).addEventListener('click', event => {
+      if (event.target.classList.contains('buy-btn')) {
+        this.cart.addProduct(event.target);
+
+      }
+    });
+  }
+
 
   goodsTotalPrice() {
     return this.#goods.reduce((sum, { price }) => sum + price, 0);
@@ -80,7 +94,7 @@ class ProductItem {
   constructor(product, img = 'https://placehold.it/200x150') {
     this.productName = product.product_name;
     this.price = product.price;
-    this.id = product.id;
+    this.id = product.id_product;
     this.img = img;
   }
 
@@ -90,7 +104,9 @@ class ProductItem {
               <div class="desc">
                   <h3>${this.productName}</h3>
                   <p>${this.price} \u20bd</p>
-                  <button class="buy-btn">Купить</button>
+                  <button class="buy-btn" data-id="${this.id}"
+                    data-name="${this.productName}"
+                    data-price="${this.price}">Купить</button>
               </div>
           </div>`;
   }
@@ -102,30 +118,104 @@ class ProductItem {
 
 class ProductCart {
   #goods;
-  #allProducts;
 
   constructor(container = ".cart-block", url = "/getBasket.json") {
     this.container = container;
     this.#goods = [];
-    this.#allProducts = [];
-    this.amount = 0; // !!!!!!!!!
-    this.countGoods = 0; // !!!!!!!!!!!
+    this.allProducts = [];
 
-    this.#getProducts(url)
+    this.#getProductCart(url)
       .then((data) => {
-        
-        console.log (data);
-        this.amount = data.amount;
-        this.countGoods = data.countGoods;
-
         this.#goods = [...data.contents];
-
         this.#render();
       });
+
+    this.#init();
+  }
+
+  #init() {
+    document.querySelector(this.container).addEventListener('click', event => {
+      if (event.target.classList.contains('del-btn')) {
+        this.removeProduct(event.target);
+      }
+    })
+   
+    document.querySelector('.btn-cart').addEventListener('click', () => {
+      document.querySelector(this.container).classList.toggle('invisible');
+    });
+ }
+
+
+
+  addProduct(target) {
+
+    this.#getProductCart('/addToBasket.json')
+      .then(data => {
+
+        if (data.result === 1) {
+
+          let productId = +target.dataset['id'];
+          let find = this.allProducts.find(product => product.id === productId);
+          if (find) {
+            find.quantity++;
+            this.#updateCart(find);
+
+          } else {
+
+            let product = {
+              id_product: productId,
+              price: +target.dataset['price'],
+              product_name: target.dataset['name'],
+              quantity: 1
+            };
+
+            // Скопипастил блок
+            // goods - это своего рода "опорный" массив, отражающий список товаров, которые нужно отрендерить.
+            // При добавлении нового товара, нас интересует только он один.
+
+            this.#goods = [product];
+
+            // далее вызывая метод render, мы добавим в allProducts только его, тем самым избегая лишнего перерендера.
+
+             this.#render();
+          }
+
+        } else {
+          alert('Error');
+        }
+      })
+
   }
 
 
-  #getProducts(url) {
+  removeProduct(target) {
+    this.#getProductCart('/deleteFromBasket.json')
+      .then(data => {
+        if (data.result === 1) {
+          let productId = +target.dataset['id'];
+          let find = this.allProducts.find(product => product.id === productId);
+          if (find.quantity > 1) { // если товара > 1, то уменьшаем количество на 1
+            find.quantity--;
+            this.#updateCart(find);
+          } else { // удаляем
+            this.allProducts.splice(this.allProducts.indexOf(find), 1);
+            document.querySelector(`.cart-item[data-id="${productId}"]`).remove();
+          }
+        } else {
+          alert('Error');
+        }
+      })
+  }
+
+
+  #updateCart(product) {
+    let block = document.querySelector(`.cart-item[data-id="${product.id}"]`);
+    block.querySelector('.product-quantity').textContent = `Количество: ${product.quantity}`;
+    block.querySelector('.product-price').textContent = `${product.quantity * product.price} ₽`;
+  }
+
+
+  #getProductCart(url) {
     return fetch(API + "" + url)
       .then((response) => response.json())
       .catch((err) => {
@@ -138,7 +228,7 @@ class ProductCart {
     const block = document.querySelector(this.container);
     this.#goods.forEach((product) => {
       const productObject = new CartItem(product);
-      this.#allProducts.push(productObject);
+      this.allProducts.push(productObject);
       block.insertAdjacentHTML('beforeend', productObject.render());
     });
   }
@@ -151,11 +241,10 @@ class ProductCart {
 // Никак не получается наследование
 // Нужно сначала тренироваться на простых задачках
 
-
 class CartItem {
 
   constructor(product, img = 'https://placehold.it/50x37') {
-    
+
     this.productName = product.product_name;
     this.price = product.price;
     this.id = product.id_product;
@@ -190,7 +279,9 @@ class CartItem {
 
 
 /********************************************************** */
-const productList = new ProductList();
-
-
 const productCart = new ProductCart();
+
+const productList = new ProductList(productCart);
+
+
+
