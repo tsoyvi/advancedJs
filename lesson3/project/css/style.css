@@ -24,7 +24,21 @@ button:focus{
     border-radius: 5px;
     transition: all ease-in-out .4s;
     cursor: pointer;
+    position: relative;
+
 }
+
+.count-cart {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 15px;
+    border-radius: 50%;
+    background-color: coral;
+    font-size: 12px;
+}
+
+
 .btn-cart:hover{
     background-color: transparent;
     border-color: #fafafa;

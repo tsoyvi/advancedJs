@@ -139,11 +139,34 @@ class ProductCart {
         this.removeProduct(event.target);
       }
     })
-   
+
     document.querySelector('.btn-cart').addEventListener('click', () => {
       document.querySelector(this.container).classList.toggle('invisible');
     });
- }
+  }
+
+  cartCount() {
+    return this.allProducts.reduce((sum, { quantity }) => sum + quantity, 0);
+  }
+
+  cartBlockText(str = "") {
+    let elCartBlock = document.querySelector(".cart-empty");
+    elCartBlock.innerText = str;
+  }
+
+  updateHTMLCartCount() {
+    let el = document.querySelector(".count-cart");
+    let count = this.cartCount();
+    el.innerText = count;
+
+    if (count == 0) {
+      el.classList.add("invisible");
+      this.cartBlockText("Корзина пока пуста!");
+    } else if (count > 0 && el.classList.contains("invisible")) {
+      el.classList.remove("invisible");
+      this.cartBlockText();
+    }
+  }
 
 
 
@@ -177,12 +200,16 @@ class ProductCart {
 
             // далее вызывая метод render, мы добавим в allProducts только его, тем самым избегая лишнего перерендера.
 
-             this.#render();
+            this.#render();
           }
+
+          this.updateHTMLCartCount(); // обновляем иконку количество в корзине
 
         } else {
           alert('Error');
         }
+
+
       })
 
   }
@@ -201,6 +228,7 @@ class ProductCart {
             this.allProducts.splice(this.allProducts.indexOf(find), 1);
             document.querySelector(`.cart-item[data-id="${productId}"]`).remove();
           }
+          this.updateHTMLCartCount(); // обновляем иконку количество в корзине
         } else {
           alert('Error');
         }
