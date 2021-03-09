@@ -6,8 +6,14 @@ const app = new Vue({
         catalogUrl: '/catalogData.json',
         imgCatalog: 'https://placehold.it/200x150',
         products: [],
+
+      //  goodsList: [],
+
         cartItems: [],
         imgCart: 'https://placehold.it/50x37',
+        cartVisible: false,
+        searchLine: '',
+
     },
     methods: {
         getJson(url) {
@@ -21,11 +27,10 @@ const app = new Vue({
         addProduct(product) {
 
             this.getJson(API + '/addToBasket.json')
-                //  this.#getProductCart('/addToBasket.json')
                 .then(data => {
                     if (data.result === 1) {
                         let find = this.cartItems.find(prod => prod.id_product === product.id_product);
-                      
+
                         if (find) {
                             find.quantity++;
                         } else {
@@ -45,13 +50,37 @@ const app = new Vue({
                     } else {
                         alert('Error');
                     }
-                })
+                });
+
+        },
+
+        removeProduct(product) {
+            this.getJson(API + '/deleteFromBasket.json')
+                .then(data => {
+                    if (data.result === 1) {
+
+                        let find = this.cartItems.find(prod => prod.id_product === product.id_product);
+
+                        if (find.quantity > 1) { // если товара > 1, то уменьшаем количество на 1
+                            find.quantity--;
+                        } else { // удаляем
+                            this.cartItems.splice(this.cartItems.indexOf(find), 1);
+                        }
+
+                    } else {
+                        alert('Error');
+                    }
+                });
+        },
+
+        filterGoods(searchField) {
+            console.log(searchField);
+            event.preventDefault();
+
 
         }
 
-        // showCart() {
 
-        // }
     },
 
     beforeCreate() {
@@ -64,6 +93,7 @@ const app = new Vue({
             .then(data => {
                 for (let el of data) {
                     this.products.push(el);
+
                 }
             });
     },

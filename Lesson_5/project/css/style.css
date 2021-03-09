@@ -82,6 +82,14 @@ img {
     width: 300px;
 }
 
+.products-empty {
+    color: red;
+}
+
+.cart-empty {
+    color: red;
+}
+
 .invisible{
     display: none;
 }

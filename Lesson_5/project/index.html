@@ -14,16 +14,15 @@
             <div class="logo">Интернет-магазин</div>
             <div class="cart">
                 <form action="#" class="search-form">
-                    <input type="text" class="search-field">
-                    <button class="btn-search" type="submit">
+                    <input type="text" class="search-field" v-model="searchLine">
+                    <button class="btn-search" type="submit" @click="filterGoods(searchLine)">
                         <i class="fas fa-search"></i>
                     </button>
                 </form>
-                <button class="btn-cart" type="button" @click="">Корзина</button>
+                <button class="btn-cart" type="button" v-on:click="cartVisible=!cartVisible">Корзина</button>
 
-                <div class="cart-block ">
-                    <div class="cart-empty"></div>
-
+                <div class="cart-block" v-show="cartVisible">
+                    <div class="cart-empty" v-if="cartItems.length==0">Корзина пока пуста!</div>
 
                     <div class="cart-item" data-id="" v-for="item of cartItems" :key="item.id_product">
                         <div class="product-bio">
@@ -36,7 +35,7 @@
                         </div>
                         <div class="right-block">
                             <p class="product-price">{{item.quantity * item.price}} ₽</p>
-                            <button class="del-btn" data-id="${this.id}">&times;</button>
+                            <button class="del-btn" @click="removeProduct(item)">&times;</button>
                         </div>
                     </div>
 
@@ -47,6 +46,8 @@
         </header>
         <main>
             <div class="products">
+                <div class="products-empty" v-if="products.length==0">Нет данных!</div>
+                
                 <div class="product-item" v-for="product of products" :key="product.id_product">
                     <img :src="imgCatalog" alt="Some img">
                     <div class="desc">
