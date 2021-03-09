@@ -6,9 +6,7 @@ const app = new Vue({
         catalogUrl: '/catalogData.json',
         imgCatalog: 'https://placehold.it/200x150',
         products: [],
-
-      //  goodsList: [],
-
+        filterlist: [],
         cartItems: [],
         imgCart: 'https://placehold.it/50x37',
         cartVisible: false,
@@ -74,11 +72,10 @@ const app = new Vue({
         },
 
         filterGoods(searchField) {
-            console.log(searchField);
             event.preventDefault();
-
-
-        }
+            let regexp = new RegExp(this.searchLine, 'i');
+            this.filterlist = this.products.filter(elem => regexp.test(elem.product_name));
+        },
 
 
     },
@@ -93,7 +90,7 @@ const app = new Vue({
             .then(data => {
                 for (let el of data) {
                     this.products.push(el);
-
+                    this.filterlist.push(el);
                 }
             });
     },
