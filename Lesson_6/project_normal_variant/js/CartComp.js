@@ -9,7 +9,7 @@ Vue.component('cart', {
     },
     methods: {
         addProduct(product) {
-            this.$parent.getJson(`${API}/addToBasket.json`)
+            this.$parent.getJson(`${API}/addToBasket1.json`)
                 .then(data => {
                     if (data.result === 1) {
                         let find = this.cartItems.find(el => el.id_product === product.id_product);
@@ -19,9 +19,8 @@ Vue.component('cart', {
                             let prod = Object.assign({ quantity: 1 }, product);
                             this.cartItems.push(prod)
                         }
-                    } else {
-                        alert('Error');
-                    }
+                  
+                   } 
                 })
         },
         remove(item) {

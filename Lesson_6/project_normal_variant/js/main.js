@@ -4,13 +4,19 @@ const app = new Vue({
     el: '#app',
     data: {
         userSearch: '',
+
     },
     methods: {
-        getJson(url){
+        getJson(url) {
+
             return fetch(url)
-                .then(result => result.json())
+                .then(
+                    result => result.json())
+
                 .catch(error => {
                     console.log(error);
+                    this.$refs.error.showError();
+
                 })
         },
     },
