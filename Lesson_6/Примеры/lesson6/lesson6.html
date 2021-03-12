@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson 6 - Vue Components</title>
+</head>
+<body>
+<div id="app">
+    <div>
+        <button
+                v-for="tab in tabs"
+                :key="tab"
+                @click="currentTab = tab"
+        >
+            {{ tab }}
+        </button>
+        <component :is="currentComponent"></component>
+    </div>
+    <some-el
+            ref="someEl"
+            :title="someStr"
+            :counter="counter"
+            :increase="increase"
+            @click="clickHandler"
+    >
+<!--        <div>I'm injected as slot</div>-->
+<!--    в 2.6.0 и выше используем v-slot:testSlot    -->
+        <template slot="testSlot">
+            <p>I'm injected as slot</p>
+        </template>
+    </some-el>
+<!--    <some-el-->
+<!--            ref="someEl"-->
+<!--            :title="someStr"-->
+<!--            :counter="counter"-->
+<!--            @click="clickHandler"-->
+<!--            @parent-increase="increase"-->
+<!--    ></some-el>-->
+<!--    <some-el-->
+<!--            ref="someEl"-->
+<!--            :title="someStr"-->
+<!--            :counter="counter"-->
+<!--            @click="clickHandler"-->
+<!--    ></some-el>-->
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="components.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
