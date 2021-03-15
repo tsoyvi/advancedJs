@@ -1,4 +1,4 @@
-const API = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
+//const API = 'https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses';
 
 const app = new Vue({
     el: '#app',
@@ -26,6 +26,8 @@ const app = new Vue({
               });
         },
         putJson(url, data) {
+
+
             return fetch(url, {
                 method: 'PUT',
                 headers: {
@@ -38,6 +40,7 @@ const app = new Vue({
               });
         },
         deleteJson(url) {
+   
             return fetch(url, {
                 method: 'DELETE',
                 headers: {

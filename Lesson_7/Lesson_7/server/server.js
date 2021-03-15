@@ -1,7 +1,10 @@
-const pointsDir = '..'; // на винде необходимо ставить 2 точки, на appl я так понимаю одну точку
+const pointsDir = '..'; // на компе необходимо ставить 2 точки, на другом компе одну точку.   ?????
+// это связано как то с powerShell, пока для меня это загадка
 
 const express = require('express');
 const fs = require('fs');
+
+const logger = require('./logger');
 
 const app = express();
 
@@ -20,7 +23,7 @@ app.use('/', express.static(pointsDir + '/public')); // запросы в кор
 app.get('/api/products', (req, res) => {
   fs.readFile(pointsDir + '/server/db/products.json', 'utf-8', (err, data) => {
     if (err) {
-      res.send(JSON.stringify({result: 0, text: err}));
+      res.send(JSON.stringify({ result: 0, text: err }));
     } else {
       res.send(data);
     }
@@ -33,7 +36,7 @@ app.get('/api/products', (req, res) => {
 app.get('/api/cart', (req, res) => {
   fs.readFile(pointsDir + '/server/db/userCart.json', 'utf-8', (err, data) => {
     if (err) {
-      res.sendStatus(404, JSON.stringify({result: 0, text: err}));
+      res.sendStatus(404, JSON.stringify({ result: 0, text: err }));
     } else {
       res.send(data);
     }
@@ -44,7 +47,7 @@ app.get('/api/cart', (req, res) => {
 app.post('/api/cart', (req, res) => {
   fs.readFile(pointsDir + '/server/db/userCart.json', 'utf-8', (err, data) => {
     if (err) {
-      res.sendStatus(404, JSON.stringify({result: 0, text: err}));
+      res.sendStatus(404, JSON.stringify({ result: 0, text: err }));
     } else {
       // парсим текущую корзину
       const cart = JSON.parse(data);
@@ -56,6 +59,7 @@ app.post('/api/cart', (req, res) => {
           res.send('{"result": 0}');
         } else {
           res.send('{"result": 1}');
+          logger(req.body.product_name, "Добавление нового товара в корзине");
         }
       })
     }
@@ -66,7 +70,7 @@ app.post('/api/cart', (req, res) => {
 app.put('/api/cart/:id', (req, res) => {
   fs.readFile(pointsDir + '/server/db/userCart.json', 'utf-8', (err, data) => {
     if (err) {
-      res.sendStatus(404, JSON.stringify({result: 0, text: err}));
+      res.sendStatus(404, JSON.stringify({ result: 0, text: err }));
     } else {
       // парсим текущую корзину
       const cart = JSON.parse(data);
@@ -80,11 +84,50 @@ app.put('/api/cart/:id', (req, res) => {
           res.send('{"result": 0}');
         } else {
           res.send('{"result": 1}');
+          logger(find.product_name, "Изменяем количество товара");
         }
       })
     }
   });
 });
+
+
+// Удаление товара в корзине
+app.delete('/api/cart/:id', (req, res) => {
+  fs.readFile(pointsDir + '/server/db/userCart.json', 'utf-8', (err, data) => {
+    if (err) {
+      res.sendStatus(404, JSON.stringify({ result: 0, text: err }));
+    } else {
+      // парсим текущую корзину
+      const cart = JSON.parse(data);
+      const find = cart.contents.find(el => el.id_product === +req.params.id);
+
+      // изменяем количество
+      if (find.quantity > 1) {
+        find.quantity--;
+      } else {
+        cart.contents.splice(cart.contents.indexOf(find), 1) // удаляем последней товар
+      }
+
+      // пишем обратно
+      /**/
+      fs.writeFile(pointsDir + '/server/db/userCart.json', JSON.stringify(cart), (err) => {
+
+        if (err) {
+          res.send('{"result": 0}');
+        } else {
+          res.send('{"result": 1}');
+          logger(find.product_name, "Удаление товара в корзине");
+        }
+      })
+
+
+    }
+  });
+});
+
+
+
 
 /**
  * Запуск сервера
