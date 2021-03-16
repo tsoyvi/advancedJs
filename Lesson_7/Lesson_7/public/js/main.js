@@ -26,8 +26,7 @@ const app = new Vue({
               });
         },
         putJson(url, data) {
-
-
+ 
             return fetch(url, {
                 method: 'PUT',
                 headers: {
@@ -39,6 +38,7 @@ const app = new Vue({
                   this.$refs.error.setError(error);
               });
         },
+
         deleteJson(url) {
    
             return fetch(url, {
