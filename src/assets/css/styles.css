@@ -2,14 +2,14 @@
 @font-face {
   font-family: Lato;
   /* Гарнитура шрифта */
-  src: url(../fonts/Lato/Lato.ttf);
+  src: url(~@/assets/fonts/Lato/Lato.ttf);
   /* Путь к файлу со шрифтом */
 }
 
 @font-face {
   font-family: OpenSans;
   /* Гарнитура шрифта */
-  src: url(../fonts/Open_Sans/OpenSans-Light.ttf);
+  src: url(~@/assets/fonts/Open_Sans/OpenSans-Light.ttf);
   /* Путь к файлу со шрифтом */
 }
 

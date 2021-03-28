@@ -1,48 +1,4 @@
-<template>
-<section class="section">
-    <div class="product container">
-
-        <product-aside></product-aside>
-
-        <div class="option-selected">
-            <product-filter></product-filter>
-            <filter-sort-block></filter-sort-block>
-
-            <div class="items-arr">
-                <product-item v-for="(product, index) of products" :product="product" :key="index">
-                </product-item>
-            </div>
-            <pagination-block></pagination-block>
-        </div>
-
-    </div>
-</section>
-
-</template>
-
-<script>
-
-import { mapActions, mapGetters } from 'vuex';
-import ProductItem from './ProductItem.vue';
-import ProductFilter from './ProductFilter.vue';
-import FilterSortBlock from './blocks/FilterSortBlock.vue';
-import ProductAside from './ProductAside.vue';
-import PaginationBlock from './blocks/PaginationBlock.vue';
-
-export default {
-  components: {
-
-    ProductAside,
-    ProductItem,
-    ProductFilter,
-    FilterSortBlock,
-    PaginationBlock,
-
-  },
-  name: 'ProductsList',
-  /* data() {
-    return {
-      products: [
+[
         {
           id_product: 124,
           product_name: 'Mango People T-shirt',
@@ -99,22 +55,4 @@ export default {
           img: 'Image_placeholder_9.png',
         },
 
-      ],
-
-    };
-  }, */
-  computed: {
-    ...mapGetters(['products']),
-  },
-  methods: {
-    ...mapActions(['getProductsList']),
-  },
-  created() {
-    // console.log(this.products);
-  },
-
-};
-</script>
-
-<style scoped lang="scss">
-</style>
+      ]

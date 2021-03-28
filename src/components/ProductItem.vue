@@ -1,7 +1,7 @@
 <template>
-  <div class="items-arr">
+
     <div class="items shadow">
-     <img src="@/assets/img/Image_placeholder_1.png" alt="Image_placeholder_1.png">
+     <img  :src="require(`../assets/img/${product.img}`)" :alt ="product.img">
         <p class="items-name">{{product.product_name}}</p>
         <p class="items-price">${{product.price}}</p>
         <div class="items-overlay">
@@ -12,7 +12,7 @@
            </button>
         </div>
     </div>
-  </div>
+
 </template>
 
 <script>
