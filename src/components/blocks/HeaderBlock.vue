@@ -133,6 +133,20 @@
 
         <div class="login">
 
+        <button class="btn-cart" type="button" @click="showCart = !showCart">
+            <img src="/img/basket.png" alt="img/basket.png">
+        </button>
+            <div class="cart-block" v-show="showCart">
+                <p v-if="!cartItems.length">Корзина пуста</p>
+                <cart-item class="cart-item"
+                v-for="item of cartItems"
+                :key="item.id_product"
+                :cart-item="item"
+                :img="imgCart"
+                @remove="remove">
+                </cart-item>
+            </div>
+
             <a href="shopping-cart.html" class="basket button">
                 <img src="/img/basket.png" alt="img/basket.png">
             </a>
@@ -211,3 +225,14 @@
     </div>
 </header>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      cartItems: [],
+      showCart: false,
+    };
+  },
+};
+</script>

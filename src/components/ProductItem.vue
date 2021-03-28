@@ -3,7 +3,7 @@
     <div class="items shadow">
      <img  :src="require(`../assets/img/${product.img}`)" :alt ="product.img">
         <p class="items-name">{{product.product_name}}</p>
-        <p class="items-price">${{product.price}}</p>
+        <p class="items-price">${{product.price.toFixed(2)}}</p>
         <div class="items-overlay">
            <button class="items-button-cart">
            <img src="@/assets/img/cart-white.png" alt="cart-white.png"
