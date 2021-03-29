@@ -282,16 +282,21 @@ h5 {
     position: relative;
 }
 
+.basket {
+    outline: none;
+    border: none;
+}
+
 
 .basket img {
     width: 32px;
     height: 29px;
 }
 
-.cart-button-block:hover .cart-button-menu-block {
-    opacity: 1;
+.cart-button-block:hover {
+   /* opacity: 1;
     transform: scale(1, 1);
-    transition: 0.2s;
+    transition: 0.2s;*/
 }
 
 .cart-button-menu-block {
@@ -301,11 +306,11 @@ h5 {
     background-color: #ffffff;
     position: absolute;
     right: 0px;
-    z-index: 100;
+    z-index: 10;
 
-    opacity: 0;
+    /*opacity: 0;
     transform: scale(0, 0);
-    transform-origin: right top;
+    transform-origin: right top;*/
 }
 
 .cart-button-menu {
@@ -319,6 +324,11 @@ h5 {
     padding: 20px 0px 15px 0px;
     border-bottom:  1px solid #ededed;
 }
+
+.cart-button-menu-img {
+    width: 75px;
+}
+
 
 .cart-button-menu-block-text > p {
     margin-bottom: 10px;

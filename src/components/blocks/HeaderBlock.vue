@@ -130,109 +130,19 @@
                 </button>
             </form>
         </div>
+        <cart></cart>
 
-        <div class="login">
-
-        <button class="btn-cart" type="button" @click="showCart = !showCart">
-            <img src="/img/basket.png" alt="img/basket.png">
-        </button>
-            <div class="cart-block" v-show="showCart">
-                <p v-if="!cartItems.length">Корзина пуста</p>
-                <cart-item class="cart-item"
-                v-for="item of cartItems"
-                :key="item.id_product"
-                :cart-item="item"
-                :img="imgCart"
-                @remove="remove">
-                </cart-item>
-            </div>
-
-            <a href="shopping-cart.html" class="basket button">
-                <img src="/img/basket.png" alt="img/basket.png">
-            </a>
-
-            <div class="cart-button-block">
-                <button class="account_button">
-                    My Account <i class="fa fa-caret-down" aria-hidden="true"></i>
-                </button>
-
-                <div class="cart-button-menu-block">
-                    <ul class="cart-button-menu">
-                        <li class="cart-button-menu-li">
-                            <img src="img/rectangle-24.png" alt="rectangle-24.png">
-                            <div class="cart-button-menu-block-text">
-                                <p class="cart-button-menu-block-header">Rebox Zane</p>
-                                <p class="stars">
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                                </p>
-                                <p class="cart-button-menu-block-price">1 x $250</p>
-                            </div>
-                            <div>
-                                <button class="cart-button-menu-button-cancel">
-                                    <i class="fa fa-times-circle" aria-hidden="true"></i>
-                                </button>
-                            </div>
-                        </li>
-
-                        <li class="cart-button-menu-li">
-                            <img src="img/rectangle-24-1.png" alt="rectangle-24-1.png">
-                            <div class="cart-button-menu-block-text">
-                                <p class="cart-button-menu-block-header">Rebox Zane</p>
-                                <p class="stars">
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                    <i class="fa fa-star-half-o" aria-hidden="true"></i>
-                                </p>
-                                <p class="cart-button-menu-block-price">1 x $250</p>
-                            </div>
-                            <div>
-                                <button class="cart-button-menu-button-cancel">
-                                    <i class="fa fa-times-circle"
-                                        aria-hidden="true"></i>
-                                </button>
-                            </div>
-                        </li>
-                    </ul>
-
-                    <div class="cart-button-menu-price cart-button-menu">
-                        <p>TOTAL</p>
-                        <p>$500.00</p>
-                    </div>
-
-                    <div class="cart-button-menu-button cart-button-menu">
-                        <div>
-                            <a href="checkout.html" class="cart-button-menu-checkout button">
-                                Checkout
-                            </a>
-                        </div>
-                        <div>
-                            <a href="shopping-cart.html"
-                                class="cart-button-menu-checkout go-to-cart button">
-                                Go to cart
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
     </div>
 </header>
 </template>
 
 <script>
+import Cart from '../Cart.vue';
+
 export default {
-  data() {
-    return {
-      cartItems: [],
-      showCart: false,
-    };
+  components: {
+    Cart,
   },
+
 };
 </script>
