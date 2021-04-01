@@ -2,6 +2,7 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
+
 import '@/assets/css/styles.css';
 import '@/assets/fonts/font-awesome-4.7.0/css/font-awesome.min.css';
 

@@ -16,10 +16,12 @@
 
                     <ul class="cart-button-menu">
                         <li class="cart-button-menu-li">
-                            <img :src="require(`../assets/img/${cartItem.img}`)"
+                            <img :src="require(`@/assets/img/${cartItem.img}`)"
                             :alt ="cartItem.img" class="cart-button-menu-img">
                             <div class="cart-button-menu-block-text">
-                                <p class="cart-button-menu-block-header">Rebox Zane</p>
+                                <p class="cart-button-menu-block-header">
+                                    {{cartItem.product_name}}
+                                </p>
 
                                 <p class="stars"> <!--Рейтинг звездочки-->
                                 <i class="fa fa-star" aria-hidden="true"

@@ -18,7 +18,7 @@
                     <cart-item class="cart-item"
                         v-for="item of cartItems"
                         :key="item.id_product"
-                        :cart-item="item"
+                        :cartItem="item"
                         @remove="remove">
                     </cart-item>
 
@@ -34,10 +34,10 @@
                             </a>
                         </div>
                         <div>
-                            <a href="shopping-cart.html"
-                                class="cart-button-menu-checkout go-to-cart button">
+                          <router-link to="/Cart"
+                              class="cart-button-menu-checkout go-to-cart button">
                                 Go to cart
-                            </a>
+                          </router-link>
                         </div>
                     </div>
 
@@ -50,15 +50,17 @@
 
 <script>
 
+import { mapActions, mapGetters } from 'vuex';
 import CartItem from './CartItem.vue';
 
 export default {
+  name: 'CartList',
   components: {
     CartItem,
   },
   data() {
     return {
-      cartItems: [{
+      /* cartItems: [{
         id_product: 124,
         product_name: 'Mango People T-shirt',
         brend: 'Bohemian',
@@ -124,25 +126,28 @@ export default {
         ],
         rating: 5,
         quantity: 5,
-      }],
+      }], */
       showCart: false,
     };
   },
 
+  computed: {
+    ...mapGetters(['cartItems']),
+  },
+
   methods: {
+    ...mapActions(['getCartList', 'remove']),
+
     sumPrice() {
       return this.cartItems.reduce((sum,
         { price, quantity }) => sum + price * quantity, 0).toFixed(2);
     },
-    remove(item) {
-      if (item.quantity > 1) {
-        console.log(item.quantity);
-      } else {
-        console.log(item.quantity);
-      }
-    },
 
   },
+  created() {
+    this.getCartList();
+  },
+
 };
 
 </script>

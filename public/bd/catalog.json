@@ -1,7 +1,7 @@
 [
   {
     "id_product": 124,
-    "product_name": "Mango People T-shirt",
+    "product_name": "Куртка People T-shirt",
     "brend": "Bohemian",
     "price": 100,
     "img": "Image_placeholder_1.png",
@@ -23,7 +23,7 @@
   },
   {
     "id_product": 457,
-    "product_name": "Mango People T-shirt",
+    "product_name": "Кабзон People T-shirt",
     "brend": "Bohemian",
     "price": 325.6,
     "img": "Image_placeholder_2.png",
@@ -44,7 +44,7 @@
   },
   {
     "id_product": 123,
-    "product_name": "Mango People T-shirt",
+    "product_name": "Ветровка People T-shirt",
     "brend": "Bohemian",
     "price": 22.6,
     "img": "Image_placeholder_3.png",
@@ -65,7 +65,7 @@
   },
   {
     "id_product": 413,
-    "product_name": "Mango People T-shirt",
+    "product_name": "Майка People T-shirt",
     "brend": "Bohemian",
     "price": 34.32,
     "img": "Image_placeholder_4.png",
@@ -87,7 +87,7 @@
   },
   {
     "id_product": 456,
-    "product_name": "Mango People T-shirt",
+    "product_name": "толстовка People T-shirt",
     "brend": "Bohemian",
     "price": 34.32,
     "img": "Image_placeholder_5.png",
@@ -105,7 +105,7 @@
   },
   {
     "id_product": 413,
-    "product_name": "Mango People T-shirt",
+    "product_name": "безрукавка People T-shirt",
     "brend": "Bohemian",
     "price": 24.9,
     "img": "Image_placeholder_6.png",
@@ -125,7 +125,7 @@
   },
   {
     "id_product": 331,
-    "product_name": "Mango People T-shirt",
+    "product_name": "Педжачёк People T-shirt",
     "brend": "Bohemian",
     "price": 53.03,
     "img": "Image_placeholder_7.png",
@@ -147,7 +147,7 @@
   },
   {
     "id_product": 952,
-    "product_name": "Mango People T-shirt",
+    "product_name": "Куртка T-shirt",
     "brend": "Bohemian",
     "price": 5.99,
     "img": "Image_placeholder_8.png",
@@ -169,7 +169,7 @@
   },
   {
     "id_product": 3414,
-    "product_name": "Mango People T-shirt",
+    "product_name": "Майка People T-shirt",
     "brend": "Bohemian",
     "price": 52.92,
     "img": "Image_placeholder_9.png",

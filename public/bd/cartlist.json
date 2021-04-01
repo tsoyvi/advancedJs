@@ -1,0 +1,69 @@
+[
+    {
+        "id_product": 124,
+        "product_name": "Куртка People T-shirt",
+        "brend": "Bohemian",
+        "price": 100,
+        "img": "Image_placeholder_1.png",
+        "size": [
+            "XS",
+            "M",
+            "L",
+            "XL",
+            "XLL"
+        ],
+        "gender": "male",
+        "material": "polyester",
+        "color": [
+            "red",
+            "blue",
+            "black"
+        ],
+        "rating": 4.5,
+        "quantity": 3
+    },
+    {
+        "id_product": 457,
+        "product_name": "Кабзон People T-shirt",
+        "brend": "Bohemian",
+        "price": 325.6,
+        "img": "Image_placeholder_2.png",
+        "size": [
+            "XXS",
+            "XS",
+            "M",
+            "L",
+            "XL"
+        ],
+        "material": "cotton",
+        "color": [
+            "red",
+            "blue",
+            "black"
+        ],
+        "rating": 5,
+        "quantity": 1
+    },
+    {
+        "id_product": 123,
+        "product_name": "Ветровка People T-shirt",
+        "brend": "Bohemian",
+        "price": 22.6,
+        "img": "Image_placeholder_3.png",
+        "size": [
+            "XS",
+            "M",
+            "L",
+            "XLL"
+        ],
+        "gender": "male",
+        "material": "polyester",
+        "color": [
+            "red",
+            "blue",
+            "black"
+        ],
+        "rating": 5,
+        "quantity": 5
+    }
+]
