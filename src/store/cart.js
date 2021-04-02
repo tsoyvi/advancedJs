@@ -39,17 +39,25 @@ export default {
       commit('SET_CART_LIST', cartItems.data);
     },
 
+    /*    addProduct({ commit }, product) {
+          // const prod = { quantity: 1, ...product };
+          console.log('add');
+          axios.get('/bd/addToBasket.json') //
+            .then((res) => {
+              if (res.data.result === 1) {
+                commit('ADD_TO_CART', product);
+              }
+            })
+            .catch((err) => {
+              console.log(`ошибка: ${err}`);
+            });
+        },
+    */
+
     addProduct({ commit }, product) {
       // const prod = { quantity: 1, ...product };
-      axios.get('/bd/addToBasket.json') //
-        .then((res) => {
-          if (res.data.result === 1) {
-            commit('ADD_TO_CART', product);
-          }
-        })
-        .catch((err) => {
-          console.log(`ошибка: ${err}`);
-        });
+      console.log('add');
+      commit('ADD_TO_CART', product);
     },
 
     remove({ commit }, product) {

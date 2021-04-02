@@ -24,9 +24,9 @@
 
 import { mapActions, mapGetters } from 'vuex';
 import ProductItem from './ProductItem.vue';
-import ProductFilter from './ProductFilter.vue';
+import ProductFilter from './blocks/ProductFilter.vue';
 import FilterSortBlock from './blocks/FilterSortBlock.vue';
-import ProductAside from './ProductAside.vue';
+import ProductAside from './blocks/Aside.vue';
 import PaginationBlock from './blocks/PaginationBlock.vue';
 
 export default {

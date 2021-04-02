@@ -24,6 +24,12 @@ const routes = [
     name: 'Shopping Cart',
     component: () => import('../views/ShoppingCart.vue'),
   },
+  {
+    path: '/SinglePage',
+    name: 'SinglePage',
+    component: () => import('../views/SinglePage.vue'),
+    props: true,
+  },
 ];
 
 const router = new VueRouter({
