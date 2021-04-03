@@ -40,6 +40,7 @@ export default {
 
   },
   name: 'ProductsList',
+  props: ['gender'],
   data() {
     return {
       /* products: [
@@ -212,7 +213,7 @@ export default {
   },
   created() {
     // console.log(JSON.stringify(this.products));
-    this.getProductsList();
+    this.getProductsList(this.gender);
   },
   mounted() {
 

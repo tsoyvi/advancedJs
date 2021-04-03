@@ -6,10 +6,13 @@
         <single-slider :productImage="product.img"></single-slider>
         <single-description :product="product"></single-description>
     </div>
-    <div v-else class="container container-items">
-        <img src="@/assets/img/rectangle_23.png" alt ="rectangle_23.png">
+    <div v-else class="cart-empty">
+
         <h1>Товар не найден</h1>
-        <router-link to="/products" class="">К списку товаров</router-link>
+        <router-link to="/products">
+          <img src="@/assets/img/rectangle_23.png" alt ="rectangle_23.png"><br>
+          К списку товаров
+        </router-link>
     </div>
   </div>
 </template>

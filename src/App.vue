@@ -30,26 +30,15 @@ export default {
     FooterBlock,
 
   },
+  methods: {
+
+    sumPrice(list) {
+      console.log(list);
+      return list.reduce((sum,
+        { price, quantity }) => sum + price * quantity, 0).toFixed(2);
+    },
+
+  },
 };
 
 </script>
-
-<style lang="scss">
-#app {
-  margin: 0px;
-  font-family: 'Lato', Arial, sans-serif;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
-</style>

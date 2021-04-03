@@ -15,10 +15,11 @@ export default {
     },
   },
   actions: {
-    async getProductsList({ commit }) {
-      const products = await axios.get('/bd/catalog.json');
-      // const products = await axios.get('https://github.com/GeekBrainsTutorial/online-store-api/blob/ca57ebba4d8eda5face06b282cc6aaf2e38fa9bf/responses/catalogData.json');
-      commit('SET_PRODUCTS_LIST', products.data);
+    async getProductsList({ commit }, gender) {
+      const { data: products } = await axios.get('/bd/catalog.json');
+      const positiveArr = products.filter((el) => el.gender === gender);
+
+      commit('SET_PRODUCTS_LIST', positiveArr);
     },
   },
 };

@@ -10,25 +10,52 @@ const routes = [
     component: () => import('../views/Home.vue'),
   },
   {
-    path: '/HotDeals',
+    path: '/hotDeals',
     name: 'Hot Deals',
     component: () => import('../views/HotDeals.vue'),
   },
   {
-    path: '/products',
-    name: 'Products',
-    component: () => import('../views/Products.vue'),
+    path: '/productsMan',
+    name: 'ProductsMan',
+    component: () => import('../views/ProductsMan.vue'),
+    props: true,
   },
   {
-    path: '/Cart',
+    path: '/productsWomen',
+    name: 'ProductsWomen',
+    component: () => import('../views/ProductsWomen.vue'),
+    props: true,
+  },
+  {
+    path: '/cart',
     name: 'Shopping Cart',
     component: () => import('../views/ShoppingCart.vue'),
   },
   {
-    path: '/SinglePage',
+    path: '/singlePage',
     name: 'SinglePage',
     component: () => import('../views/SinglePage.vue'),
     props: true,
+  },
+  {
+    path: '/checkout',
+    name: 'Checkout',
+    component: () => import('../views/Checkout.vue'),
+  },
+  {
+    path: '/featured',
+    name: 'Featured',
+    component: () => import('../views/Featured.vue'),
+  },
+  {
+    path: '/accoseriese',
+    name: 'Accoseriese',
+    component: () => import('../views/Accoseriese.vue'),
+  },
+  {
+    path: '/kids',
+    name: 'Kids',
+    component: () => import('../views/Kids.vue'),
   },
 ];
 

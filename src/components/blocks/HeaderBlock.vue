@@ -2,8 +2,9 @@
     <header class="header">
     <div class="container header-container">
         <div class="header-logo">
-            <a href="index.html" class="logo">
-                <img src="/img/logo.png" alt="logo.png">BRAN<span>D</span></a>
+            <router-link to="/" class="logo">
+                <img src="/img/logo.png" alt="logo.png">BRAN<span>D</span>
+            </router-link>
         </div>
 
         <div class="search">

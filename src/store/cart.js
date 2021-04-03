@@ -5,9 +5,16 @@ export default {
     cartItems: [],
   },
   getters: {
+
     cartItems(state) {
       return state.cartItems;
     },
+
+    sumPrice(state) {
+      return state.cartItems.reduce((sum,
+        { price, quantity }) => sum + price * quantity, 0).toFixed(2);
+    },
+
   },
   mutations: {
     SET_CART_LIST(state, cartItems) {
@@ -15,11 +22,13 @@ export default {
     },
 
     ADD_TO_CART(state, product) {
-      const find = state.cartItems.find((el) => el.id_product === product.id_product);
+      const find = state.cartItems.find((el) => (el.id_product === product.id_product)
+        && (el.color === product.color) && (el.size === product.size));
       if (find) {
-        find.quantity += 1;
+        console.log(find.quantity);
+        find.quantity += +product.quantity;
       } else {
-        state.cartItems.push({ quantity: 1, ...product });
+        state.cartItems.push({ ...product });
       }
     },
 
@@ -62,11 +71,6 @@ export default {
 
     remove({ commit }, product) {
       commit('REMOVE_FROM_CART', product);
-    },
-
-    test({ commit }, product) {
-      console.log(product);
-      commit('ADD_TO_CART', 1);
     },
 
   },

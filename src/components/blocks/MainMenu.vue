@@ -5,22 +5,26 @@
             <router-link to="/" class="main-menu-link">Home</router-link>
         </li>
         <li>
-            <router-link to="/products" class="main-menu-link">Man</router-link>
+            <router-link :to="{name: 'ProductsMan',}"
+                class="main-menu-link">Man
+            </router-link>
         </li>
         <li>
-            <router-link to="/products" class="main-menu-link">Women</router-link>
+            <router-link :to="{name: 'ProductsWomen',}"
+                class="main-menu-link">Women
+            </router-link>
         </li>
         <li>
-            <a href="#!" class="main-menu-link">Kids</a>
+            <router-link to="/kids" class="main-menu-link">Kids</router-link>
         </li>
         <li>
-            <a href="#!" class="main-menu-link">Accoseriese</a>
+            <router-link to="/accoseriese" class="main-menu-link">Accoseriese</router-link>
         </li>
         <li>
-            <a href="#!" class="main-menu-link">Featured</a>
+            <router-link to="/featured" class="main-menu-link">Featured</router-link>
         </li>
         <li>
-            <router-link to="/HotDeals" class="main-menu-link">Hot Deals</router-link>
+            <router-link to="/hotDeals" class="main-menu-link">Hot Deals</router-link>
         </li>
     </ul>
 </nav>

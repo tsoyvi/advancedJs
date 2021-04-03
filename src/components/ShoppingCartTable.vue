@@ -56,8 +56,8 @@
 
                 <div class="table-forms-proceed-checkout-block">
                     <div class="table-forms-proceed-checkout-block-sub">
-                        <p class="sub-total">Sub total <span>$900</span> </p>
-                        <p class="grand-total">GRAND TOTAL <span>$900</span></p>
+                        <p class="sub-total">Sub total <span>${{sumPrice}}</span> </p>
+                        <p class="grand-total">GRAND TOTAL <span>${{sumPrice}}</span></p>
                         <button class="proceed-checkout-button button-magenta">
                             proceed to checkout
                         </button>
@@ -83,23 +83,13 @@ export default {
     Shopping,
 
   },
-  data() {
-    return {
-      // showCart: false,
-    };
-  },
 
   computed: {
-    ...mapGetters(['cartItems']),
+    ...mapGetters(['cartItems', 'sumPrice']),
   },
 
   methods: {
     ...mapActions(['getCartList', 'remove']),
-
-    sumPrice() {
-      return this.cartItems.reduce((sum,
-        { price, quantity }) => sum + price * quantity, 0).toFixed(2);
-    },
 
   },
 

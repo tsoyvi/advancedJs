@@ -14,7 +14,7 @@
                     </td>
 
                     <td>{{cartItem.price}}</td>
-                    <td><input type="number" name="num0" v-model="cartItem.quantity"
+                    <td><input type="number" name="num0" v-model.number="cartItem.quantity"
                         class="cart-table-product-count" max="99" min="1">
                     </td>
                     <td>FREE</td>

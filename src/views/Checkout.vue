@@ -2,24 +2,20 @@
   <div>
 
     <bread-crumbs-block></bread-crumbs-block>
-    <products-list></products-list>
-
-    <benefit-block></benefit-block>
-
+    <checkout-form></checkout-form>
   </div>
 </template>
 
 <script>
 
-import ProductsList from '@/components/ProductsList.vue';
 import BreadCrumbsBlock from '@/components/blocks/BreadCrumbsBlock.vue';
-import BenefitBlock from '@/components/blocks/ВenefitBlock.vue';
+import CheckoutForm from '@/components/CheckoutForm.vue';
 
 export default {
+  name: 'Checkout',
   components: {
     BreadCrumbsBlock,
-    ProductsList,
-    BenefitBlock,
+    CheckoutForm,
 
   },
 };
