@@ -6,9 +6,9 @@
 
     <div v-else class="cart-empty">
         <h1>Корзина пока пуста</h1>
-        <router-link to="/products" class="">
+        <router-link to="/" class="">
         <img src="@/assets/img/rectangle_23.png" alt ="rectangle_23.png"><br>
-        К списку товаров</router-link>
+        На главную</router-link>
     </div>
 
   </div>

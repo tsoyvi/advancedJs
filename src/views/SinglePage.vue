@@ -9,9 +9,9 @@
     <div v-else class="cart-empty">
 
         <h1>Товар не найден</h1>
-        <router-link to="/products">
+        <router-link to="/">
           <img src="@/assets/img/rectangle_23.png" alt ="rectangle_23.png"><br>
-          К списку товаров
+          На главную
         </router-link>
     </div>
   </div>

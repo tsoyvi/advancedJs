@@ -2,7 +2,7 @@
   {
     "id_product": 124,
     "product_name": "Куртка People T-shirt",
-    "brend": "Bohemian",
+    "brend": "Floral",
     "price": 100,
     "img": "Image_placeholder_1.png",
     "size": [
@@ -24,7 +24,7 @@
   {
     "id_product": 457,
     "product_name": "Кабзон People T-shirt",
-    "brend": "Bohemian",
+    "brend": "Floral",
     "price": 325.6,
     "img": "Image_placeholder_2.png",
     "size": [
@@ -66,7 +66,7 @@
   {
     "id_product": 413,
     "product_name": "Майка People T-shirt",
-    "brend": "Bohemian",
+    "brend": "Lace",
     "price": 34.32,
     "img": "Image_placeholder_4.png",
     "size": [
@@ -88,7 +88,7 @@
   {
     "id_product": 456,
     "product_name": "толстовка People T-shirt",
-    "brend": "Bohemian",
+    "brend": "Floral",
     "price": 34.32,
     "img": "Image_placeholder_5.png",
     "size": [
@@ -126,7 +126,7 @@
   {
     "id_product": 331,
     "product_name": "Педжачёк People T-shirt",
-    "brend": "Bohemian",
+    "brend": "Lace",
     "price": 53.03,
     "img": "Image_placeholder_7.png",
     "size": [
@@ -148,7 +148,7 @@
   {
     "id_product": 952,
     "product_name": "Куртка T-shirt",
-    "brend": "Bohemian",
+    "brend": "Floral",
     "price": 5.99,
     "img": "Image_placeholder_8.png",
     "size": [
@@ -188,7 +188,7 @@
   {
     "id_product": 3156,
     "product_name": "BLAZE LEGGINGS",
-    "brend": "Bohemian",
+    "brend": "Lace",
     "price": 41.01,
     "img": "Layer_44.png",
     "size": [
@@ -254,7 +254,7 @@
   {
     "id_product": 3357,
     "product_name": "SYLVA SWEATER",
-    "brend": "Bohemian",
+    "brend": "Lace",
     "price": 57.1,
     "img": "Layer_47.png",
     "size": [
@@ -262,7 +262,7 @@
       "XS",
       "M",
       "L",
-      "XL"
+      "XL5"
     ],
     "gender": "female",
     "material": "cotton",
