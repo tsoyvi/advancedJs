@@ -36,5 +36,7 @@ export default {
   methods: {
     ...mapActions(['filters']),
   },
+  created() {
+  },
 };
 </script>
