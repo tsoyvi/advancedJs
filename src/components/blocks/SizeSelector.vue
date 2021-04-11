@@ -6,7 +6,7 @@
 
                     <div v-for="(size, index) of sizesList" :key="index">
                         <label :for="size"><input :id="size" type="checkbox"
-                            @change="filters({ size: sizeChecked })"
+                            @change="filterSize({ size: sizeChecked })"
                             v-bind:value="size"
                             v-model="sizeChecked">
                          {{size}}
@@ -24,7 +24,7 @@ import { mapActions, mapGetters } from 'vuex';
 // v-model="selectedUsers"
 
 export default {
-  name: 'BrendSelector',
+  name: 'SizeSelector',
   data() {
     return {
       sizeChecked: [],
@@ -34,7 +34,7 @@ export default {
     ...mapGetters(['sizesList']),
   },
   methods: {
-    ...mapActions(['filters']),
+    ...mapActions(['filterSize']),
   },
   created() {
   },

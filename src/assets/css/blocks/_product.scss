@@ -127,6 +127,7 @@
     list-style-type: none;
     color: #6f6e6e;
     width: 280px;
+    /*outline: blue solid 1px;*/
 }
 
 .selector-header {
@@ -177,10 +178,12 @@
     border: none;
 }
 
+/* выбора цены */
+
 
 .selector-price-numbers {
     font-size: 14px;
-    margin-top: 10px;
+    margin: 15px 5px 0px 5px;
     color: #6f6e6e;
     font-family: OpenSans;
 }
@@ -190,50 +193,53 @@
    flex-wrap: wrap;
    justify-content: space-between;
    align-content: space-between;
-   height: 50px;
+   min-height: 30px;
 }
 
-.range-filter {
+.range-slider{
     width: 100%;
-}
-  
-.range-controls {
+    margin: auto;
+    text-align: center;
     position: relative;
-    padding-top: 7px;
-}
+    margin-top: 22px;
+  }
   
-.range-controls .scale {
-    height: 6px;
-    background: #eee;
-}
+  input[type=range] {
+    -webkit-appearance: none;
+  }
   
-.range-controls .bar {
-    width: 50%;
-    height: 6px;
-    background: $magenta_color;
-    margin-left: 20%;
-}
+  input[type=range]:focus {
+    outline: none;
+  }
   
-.range-controls .toggle {
+  .range-slider svg, .range-slider input[type=range] {
     position: absolute;
-    top: 3px;
     left: 0;
-    width: 14px;
-    height: 14px;
-    border: none;
-    padding: 0;
-    background-color:$magenta_color;
-    border-radius: 50%;
-    cursor: pointer;
-}
-
-.range-controls .toggle-min {
-    left: 20%;
-}
-.range-controls .toggle-max {
-    left: 65%;
-}
+    bottom: 0;
+    width: 100%;
+  }
   
+  input[type=range]::-webkit-slider-runnable-track {
+    cursor: pointer;
+    background: #eee;
+    height: 6px;
+  }
+  
+  input[type=range]::-webkit-slider-thumb {
+    z-index: 1;
+    position: relative;
+    top: 1px;
+    margin-top: -5px;
+    height: 15px;
+    width: 15px;
+    border-radius: 15px;
+    background: #f16d7f;
+    cursor: pointer;
+    -webkit-appearance: none;
+  }
+/* ***************************  */
+
+
 
 .sort-block {
     width: 100%;

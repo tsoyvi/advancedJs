@@ -6,14 +6,14 @@
                     <div class="selector-trending-button">
                         <div v-for="(brend, index) of brendsList" :key="index">
                             <button class="trending-now-select button"
-                            @click="filters({ brend })">
+                            @click="filterBrend({ brend })">
                                 {{brend}}
                             </button>
                         </div>
 
                         <div>
                             <button class="trending-now-select button"
-                                @click="filters({ brend: null})">
+                                @click="filterBrend({ brend: null})">
                                 Reset
                             </button></div>
                        <!--<div><button class="trending-now-select button">Lace</button></div>-->
@@ -34,7 +34,7 @@ export default {
     ...mapGetters(['brendsList']),
   },
   methods: {
-    ...mapActions(['filters']),
+    ...mapActions(['filterBrend']),
   },
 };
 </script>

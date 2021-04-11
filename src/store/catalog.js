@@ -5,11 +5,11 @@ export default {
     products: [],
     productsFiltered: [],
     filtersList: {
-      gender: null,
       brend: null,
       size: [],
-      maxPrice: 0,
       minPrice: 0,
+      maxPrice: 0,
+      searchString: '',
     },
   },
   getters: {
@@ -31,6 +31,13 @@ export default {
       });
       return sizes.sort();
     },
+
+    maxPriceProducts(state) { // получаем максимальное значение  стоимости товаров
+      if (!state.products.length) {
+        return 'max';
+      }
+      return state.products.reduce((max, { price }) => (max > price ? max : price));
+    },
   },
 
   mutations: {
@@ -38,8 +45,18 @@ export default {
       state.products = products;
     },
 
+    SET_MAX_PRICE(state) {
+      state.filtersList.maxPrice = state.products.reduce((max,
+        { price }) => (max > price ? max : price));
+    },
+
+    SET_SEARCH_STRING(state, searchString) {
+      state.filtersList.searchString = searchString;
+    },
+
     SET_FILTERED_PRODUCTS(state) {
-      state.productsFiltered = [...state.products];
+      const regexp = new RegExp(state.filtersList.searchString, 'i');
+      state.productsFiltered = state.products.filter((el) => regexp.test(el.product_name));
 
       if (state.filtersList.brend) {
         state.productsFiltered = state.productsFiltered.filter((el) => el.brend
@@ -51,6 +68,9 @@ export default {
           (sizeProduct) => state.filtersList.size.includes(sizeProduct),
         ));
       }
+
+      state.productsFiltered = state.productsFiltered.filter(({ price }) => price
+        <= state.filtersList.maxPrice && price >= state.filtersList.minPrice);
     },
 
     SET_FILTER_BREND(state, { brend }) {
@@ -61,30 +81,40 @@ export default {
       state.filtersList.size = [...size];
     },
 
+    SET_FILTER_PRICE(state, { minPrice, maxPrice }) {
+      state.filtersList.minPrice = minPrice;
+      state.filtersList.maxPrice = maxPrice;
+    },
+
   },
 
   actions: {
     async getProductsList({ commit }, gender) {
+      console.log(gender);
       const { data: products } = await axios.get(`/bd/catalog_${gender}.json`);
 
       commit('SET_PRODUCTS_LIST', products);
+      commit('SET_MAX_PRICE');
       commit('SET_FILTERED_PRODUCTS');
     },
 
-    search({ commit, state }, searchString) {
-      const regexp = new RegExp(searchString, 'i');
-      const productsFiltered = state.products.filter((el) => regexp.test(el.product_name));
-      commit('SET_FILTERED_PRODUCTS', productsFiltered);
+    search({ commit }, searchString) {
+      commit('SET_SEARCH_STRING', searchString);
+      commit('SET_FILTERED_PRODUCTS', searchString);
     },
 
-    filters({ commit }, param) {
-      if ('brend' in param) {
-        commit('SET_FILTER_BREND', param);
-      }
+    filterBrend({ commit }, param) {
+      commit('SET_FILTER_BREND', param);
+      commit('SET_FILTERED_PRODUCTS');
+    },
 
-      if ('size' in param) {
-        commit('SET_FILTER_SIZE', param);
-      }
+    filterSize({ commit }, param) {
+      commit('SET_FILTER_SIZE', param);
+      commit('SET_FILTERED_PRODUCTS');
+    },
+
+    filterPrice({ commit }, param) {
+      commit('SET_FILTER_PRICE', param);
       commit('SET_FILTERED_PRODUCTS');
     },
   },

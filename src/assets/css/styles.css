@@ -445,6 +445,7 @@ h5 {
   list-style-type: none;
   color: #6f6e6e;
   width: 280px;
+  /*outline: blue solid 1px;*/
 }
 
 .selector-header {
@@ -504,9 +505,10 @@ h5 {
   border: none;
 }
 
+/* выбора цены */
 .selector-price-numbers {
   font-size: 14px;
-  margin-top: 10px;
+  margin: 15px 5px 0px 5px;
   color: #6f6e6e;
   font-family: OpenSans;
 }
@@ -522,51 +524,52 @@ h5 {
           justify-content: space-between;
   -ms-flex-line-pack: justify;
       align-content: space-between;
-  height: 50px;
+  min-height: 30px;
 }
 
-.range-filter {
+.range-slider {
+  width: 100%;
+  margin: auto;
+  text-align: center;
+  position: relative;
+  margin-top: 22px;
+}
+
+input[type=range] {
+  -webkit-appearance: none;
+}
+
+input[type=range]:focus {
+  outline: none;
+}
+
+.range-slider svg, .range-slider input[type=range] {
+  position: absolute;
+  left: 0;
+  bottom: 0;
   width: 100%;
 }
 
-.range-controls {
-  position: relative;
-  padding-top: 7px;
-}
-
-.range-controls .scale {
-  height: 6px;
-  background: #eee;
-}
-
-.range-controls .bar {
-  width: 50%;
-  height: 6px;
-  background: #f16d7f;
-  margin-left: 20%;
-}
-
-.range-controls .toggle {
-  position: absolute;
-  top: 3px;
-  left: 0;
-  width: 14px;
-  height: 14px;
-  border: none;
-  padding: 0;
-  background-color: #f16d7f;
-  border-radius: 50%;
+input[type=range]::-webkit-slider-runnable-track {
   cursor: pointer;
+  background: #eee;
+  height: 6px;
 }
 
-.range-controls .toggle-min {
-  left: 20%;
+input[type=range]::-webkit-slider-thumb {
+  z-index: 1;
+  position: relative;
+  top: 1px;
+  margin-top: -5px;
+  height: 15px;
+  width: 15px;
+  border-radius: 15px;
+  background: #f16d7f;
+  cursor: pointer;
+  -webkit-appearance: none;
 }
 
-.range-controls .toggle-max {
-  left: 65%;
-}
-
+/* ***************************  */
 .sort-block {
   width: 100%;
   height: 50px;
