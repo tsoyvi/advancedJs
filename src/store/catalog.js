@@ -91,7 +91,8 @@ export default {
   actions: {
     async getProductsList({ commit }, gender) {
       console.log(gender);
-      const { data: products } = await axios.get(`/bd/catalog_${gender}.json`);
+      // const { data: products } = await axios.get(`/bd/catalog_${gender}.json`);
+      const { data: products } = await axios.get(`/api/products_${gender}`);
 
       commit('SET_PRODUCTS_LIST', products);
       commit('SET_MAX_PRICE');

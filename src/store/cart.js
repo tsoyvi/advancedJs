@@ -44,8 +44,9 @@ export default {
 
   actions: {
     async getCartList({ commit }) {
-      const cartItems = await axios.get('/bd/cartlist.json');
-      commit('SET_CART_LIST', cartItems.data);
+      // const cartItems = await axios.get('/bd/cartlist.json');
+      const { data: cartItems } = await axios.get('/api/cart');
+      commit('SET_CART_LIST', cartItems);
     },
 
     /*    addProduct({ commit }, product) {
@@ -65,13 +66,73 @@ export default {
 
     addProduct({ commit }, product) {
       // const prod = { quantity: 1, ...product };
-      console.log('add');
-      commit('ADD_TO_CART', product);
+      axios({
+        method: 'post',
+        url: '/api/cart',
+        data: JSON.stringify(product),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+        .then((response) => {
+          console.log('Ответ сервера успешно получен!');
+          console.log(response.data);
+          commit('ADD_TO_CART', product);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+
+      /*
+      const result = await axios.post('/api/cart', {
+        product,
+      });
+    */
+      // console.log(result);
     },
 
     remove({ commit }, product) {
-      commit('REMOVE_FROM_CART', product);
+      axios({
+        method: 'delete',
+        url: `/api/cart/${product.id_product}`,
+        params: {
+          id: product.id_product,
+        },
+        data: JSON.stringify(product),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+        .then((response) => {
+          console.log('Ответ сервера успешно получен!');
+          console.log(response.data);
+          commit('REMOVE_FROM_CART', product);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
     },
 
+    delete({ commit }, product) {
+      axios({
+        method: 'delete',
+        url: `/api/cart/${product.id_product}`,
+        params: {
+          id: product.id_product,
+        },
+        data: JSON.stringify(product),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+        .then((response) => {
+          console.log('Ответ сервера успешно получен!');
+          console.log(response.data);
+          commit('REMOVE_FROM_CART', product);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
   },
 };

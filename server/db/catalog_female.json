@@ -1,0 +1,90 @@
+[
+  {
+    "id_product": 3156,
+    "product_name": "BLAZE LEGGINGS",
+    "brend": "Lace",
+    "price": 41.01,
+    "img": "Layer_44.png",
+    "size": [
+      "XXS",
+      "XS",
+      "M",
+      "L",
+      "XL"
+    ],
+    "gender": "female",
+    "material": "polyester",
+    "color": [
+      "red",
+      "blue",
+      "black"
+    ],
+    "rating": 4.5
+  },
+  {
+    "id_product": 3131,
+    "product_name": "ALEXA SWEATER",
+    "brend": "Bohemian",
+    "price": 50,
+    "img": "Layer_45.png",
+    "size": [
+      "XXS",
+      "XS",
+      "M",
+      "L",
+      "XL"
+    ],
+    "gender": "female",
+    "material": "cotton",
+    "color": [
+      "red",
+      "blue",
+      "black"
+    ],
+    "rating": 4
+  },
+  {
+    "id_product": 325,
+    "product_name": "AGNES TOP",
+    "brend": "Bohemian",
+    "price": 53.91,
+    "img": "Layer_46.png",
+    "size": [
+      "XXS",
+      "XS",
+      "M",
+      "L",
+      "XL"
+    ],
+    "gender": "female",
+    "material": "polyester",
+    "color": [
+      "red",
+      "blue",
+      "black"
+    ],
+    "rating": 5
+  },
+  {
+    "id_product": 3357,
+    "product_name": "SYLVA SWEATER",
+    "brend": "Lace",
+    "price": 57.1,
+    "img": "Layer_47.png",
+    "size": [
+      "XXS",
+      "XS",
+      "M",
+      "L",
+      "XL5"
+    ],
+    "gender": "female",
+    "material": "cotton",
+    "color": [
+      "red",
+      "blue",
+      "black"
+    ],
+    "rating": 4
+  }
+]

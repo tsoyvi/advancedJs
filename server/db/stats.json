@@ -1,0 +1,32 @@
+[
+    {
+        "time": "17 Mar 2021, 7:47:27 pm",
+        "prod_name": "Мышка",
+        "action": "add"
+    },
+    {
+        "time": "17 Mar 2021, 7:47:37 pm",
+        "prod_name": "Ноутбук",
+        "action": "add"
+    },
+    {
+        "time": "12 Apr 2021, 10:52:47 pm",
+        "prod_name": "Кабзон People T-shirt",
+        "action": "add"
+    },
+    {
+        "time": "12 Apr 2021, 11:18:00 pm",
+        "prod_name": "Куртка People T-shirt",
+        "action": "del"
+    },
+    {
+        "time": "12 Apr 2021, 11:18:14 pm",
+        "prod_name": "Кабзон People T-shirt",
+        "action": "del"
+    },
+    {
+        "time": "12 Apr 2021, 11:18:16 pm",
+        "prod_name": "Ветровка People T-shirt",
+        "action": "del"
+    }
+]

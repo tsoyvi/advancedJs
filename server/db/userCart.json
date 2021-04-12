@@ -1,0 +1,14 @@
+[
+    {
+        "id_product": 457,
+        "product_name": "Кабзон People T-shirt",
+        "brend": "Floral",
+        "price": 325.6,
+        "img": "Image_placeholder_2.png",
+        "size": "XXS",
+        "material": "cotton",
+        "color": "red",
+        "rating": 5,
+        "quantity": 1
+    }
+]
