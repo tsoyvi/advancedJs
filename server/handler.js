@@ -14,7 +14,6 @@ const handler = (req, res, action, file) => {
     if (err) {
       res.sendStatus(404, JSON.stringify({ result: 0, text: err }));
     } else {
-      console.log(data);
       const { name, newCart } = actions[action](JSON.parse(data), req);
 
       fs.writeFile(file, newCart, (err) => {

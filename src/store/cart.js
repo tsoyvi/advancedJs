@@ -1,4 +1,4 @@
-import axios from 'axios';
+import requests from './requests';
 
 export default {
   state: {
@@ -25,7 +25,6 @@ export default {
       const find = state.cartItems.find((el) => (el.id_product === product.id_product)
         && (el.color === product.color) && (el.size === product.size));
       if (find) {
-        console.log(find.quantity);
         find.quantity += +product.quantity;
       } else {
         state.cartItems.push({ ...product });
@@ -39,100 +38,58 @@ export default {
         state.cartItems.splice(state.cartItems.indexOf(product), 1);
       }
     },
-
   },
 
+  // все ссылки настроены на работу через сервер nodejs
+  // для работы необходимо собрать проект (npm run build)
+  // запустить nodejs сервер (nodemon server/server.js)
+  //
   actions: {
-    async getCartList({ commit }) {
+    getCartList({ commit }) {
       // const cartItems = await axios.get('/bd/cartlist.json');
-      const { data: cartItems } = await axios.get('/api/cart');
-      commit('SET_CART_LIST', cartItems);
-    },
-
-    /*    addProduct({ commit }, product) {
-          // const prod = { quantity: 1, ...product };
-          console.log('add');
-          axios.get('/bd/addToBasket.json') //
-            .then((res) => {
-              if (res.data.result === 1) {
-                commit('ADD_TO_CART', product);
-              }
-            })
-            .catch((err) => {
-              console.log(`ошибка: ${err}`);
-            });
-        },
-    */
-
-    addProduct({ commit }, product) {
-      // const prod = { quantity: 1, ...product };
-      axios({
-        method: 'post',
-        url: '/api/cart',
-        data: JSON.stringify(product),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-        .then((response) => {
-          console.log('Ответ сервера успешно получен!');
-          console.log(response.data);
-          commit('ADD_TO_CART', product);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-
-      /*
-      const result = await axios.post('/api/cart', {
-        product,
-      });
-    */
-      // console.log(result);
-    },
-
-    remove({ commit }, product) {
-      axios({
-        method: 'delete',
-        url: `/api/cart/${product.id_product}`,
-        params: {
-          id: product.id_product,
-        },
-        data: JSON.stringify(product),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-        .then((response) => {
-          console.log('Ответ сервера успешно получен!');
-          console.log(response.data);
-          commit('REMOVE_FROM_CART', product);
-        })
-        .catch((error) => {
-          console.log(error);
+      requests.getJson('/api/cart')
+        .then((data) => {
+          commit('SET_CART_LIST', data);
         });
     },
 
-    delete({ commit }, product) {
-      axios({
-        method: 'delete',
-        url: `/api/cart/${product.id_product}`,
-        params: {
-          id: product.id_product,
-        },
-        data: JSON.stringify(product),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      })
-        .then((response) => {
-          console.log('Ответ сервера успешно получен!');
-          console.log(response.data);
-          commit('REMOVE_FROM_CART', product);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+    addProduct({ state, commit }, product) {
+      const find = state.cartItems.find((el) => el.id_product === product.id_product);
+      if (find) {
+        console.log(product.quantity);
+        requests.putJson(`/api/cart/${product.id_product}`, { quantity: +product.quantity })
+          .then((data) => {
+            if (data.result === 1) {
+              commit('ADD_TO_CART', product);
+            }
+          });
+      } else {
+        requests.postJson('/api/cart', product)
+          .then((data) => {
+            if (data.result === 1) {
+              commit('ADD_TO_CART', product);
+            }
+          });
+      }
+    },
+
+    removeProduct({ commit }, product) {
+      console.log(product.quantity);
+      if (product.quantity > 1) {
+        requests.putJson(`/api/cart/${product.id_product}`, { quantity: -1 })
+          .then((data) => {
+            if (data.result === 1) {
+              commit('REMOVE_FROM_CART', product);
+            }
+          });
+      } else {
+        requests.deleteJson(`/api/cart/${product.id_product}`)
+          .then((data) => {
+            if (data.result === 1) {
+              commit('REMOVE_FROM_CART', product);
+            }
+          });
+      }
     },
   },
 };

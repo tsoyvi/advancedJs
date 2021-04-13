@@ -20,8 +20,9 @@ app.get('/api/products_male', (req, res) => {
   });
 });
 
-app.get('/api/products', (req, res) => {
-  fs.readFile('./server/db/products.json', 'utf-8', (err, data) => {
+// запрос на женские товары
+app.get('/api/products_female', (req, res) => {
+  fs.readFile('./server/db/catalog_female.json', 'utf-8', (err, data) => {
     if (err) {
       res.send(JSON.stringify({ result: 0, text: err }));
       // res.sendStatus(404, JSON.stringify({result: 0, text: err}));

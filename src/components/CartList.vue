@@ -71,9 +71,7 @@ export default {
   },
 
   methods: {
-
-    ...mapActions(['getCartList', 'remove']),
-
+    ...mapActions(['getCartList']),
   },
   created() {
     this.getCartList();

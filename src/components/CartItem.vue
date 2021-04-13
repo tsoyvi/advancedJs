@@ -30,7 +30,7 @@
         </div>
         <div>
             <button class="cart-button-menu-button-cancel"
-                @click="$emit('remove', cartItem)">
+                @click="removeProduct(cartItem)">
                 <i class="fa fa-times-circle" aria-hidden="true"></i>
             </button>
         </div>
@@ -42,10 +42,14 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 
 export default {
   name: 'CartItem',
   props: ['cartItem'],
+  methods: {
+    ...mapActions(['removeProduct']),
+  },
 };
 
 </script>

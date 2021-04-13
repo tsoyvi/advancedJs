@@ -1,6 +1,6 @@
 <template>
   <select :id="id" :class="styleList"  @change="selectorRefresh({id,selected})" v-model="selected">
-        <option v-for="(item, index) of list" :key="index">
+        <option v-for="(item, index) of list" :key="index" :value="item">
                         {{ item }}
         </option>
   </select>
@@ -24,7 +24,7 @@ export default {
   },
 
   methods: {
-    ...mapActions(['addProduct', 'loadProduct', 'selectorRefresh', 'selectRefresh']),
+    ...mapActions(['selectorRefresh']),
   },
 
   created() {
