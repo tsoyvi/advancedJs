@@ -24,19 +24,19 @@ export default {
     ADD_TO_CART(state, product) {
       const find = state.cartItems.find((el) => (el.id_product === product.id_product)
         && (el.color === product.color) && (el.size === product.size));
-      if (find) {
-        find.quantity += +product.quantity;
-      } else {
-        state.cartItems.push({ ...product });
-      }
+      find.quantity += +product.quantity;
+    },
+
+    INSERT_TO_CART(state, product) {
+      state.cartItems.push({ ...product });
     },
 
     REMOVE_FROM_CART(state, product) {
-      if (product.quantity > 1) {
-        state.cartItems[state.cartItems.indexOf(product)].quantity -= 1;
-      } else {
-        state.cartItems.splice(state.cartItems.indexOf(product), 1);
-      }
+      state.cartItems[state.cartItems.indexOf(product)].quantity -= 1;
+    },
+
+    DELETE_FROM_CART(state, product) {
+      state.cartItems.splice(state.cartItems.indexOf(product), 1);
     },
   },
 
@@ -44,6 +44,11 @@ export default {
   // для работы необходимо собрать проект (npm run build)
   // запустить nodejs сервер (nodemon server/server.js)
   //
+  // возникла проблема если выбрать цвет и размер
+  // я не учёл что для товара с разным цветом и размером должен быть свой id
+  // пришлось говнокодить и находить товар еще и по цветам и размерам
+  // так конечно не делается и поиск происходит только по id
+  // но это как выход из моей ошибки по созданию БД товаров
   actions: {
     getCartList({ commit }) {
       // const cartItems = await axios.get('/bd/cartlist.json');
@@ -54,10 +59,11 @@ export default {
     },
 
     addProduct({ state, commit }, product) {
-      const find = state.cartItems.find((el) => el.id_product === product.id_product);
+      const find = state.cartItems.find((el) => (el.id_product === product.id_product)
+        && (el.color === product.color) && (el.size === product.size));
       if (find) {
-        console.log(product.quantity);
-        requests.putJson(`/api/cart/${product.id_product}`, { quantity: +product.quantity })
+        requests.putJson(`/api/cart/${product.id_product}`,
+          { quantity: +product.quantity, color: product.color, size: product.size })
           .then((data) => {
             if (data.result === 1) {
               commit('ADD_TO_CART', product);
@@ -67,26 +73,27 @@ export default {
         requests.postJson('/api/cart', product)
           .then((data) => {
             if (data.result === 1) {
-              commit('ADD_TO_CART', product);
+              commit('INSERT_TO_CART', product);
             }
           });
       }
     },
 
     removeProduct({ commit }, product) {
-      console.log(product.quantity);
       if (product.quantity > 1) {
-        requests.putJson(`/api/cart/${product.id_product}`, { quantity: -1 })
+        requests.putJson(`/api/cart/${product.id_product}`,
+          { quantity: -1, color: product.color, size: product.size })
           .then((data) => {
             if (data.result === 1) {
               commit('REMOVE_FROM_CART', product);
             }
           });
       } else {
-        requests.deleteJson(`/api/cart/${product.id_product}`)
+        requests.deleteJson(`/api/cart/${product.id_product}`,
+          { params: { color: product.color, size: product.size } })
           .then((data) => {
             if (data.result === 1) {
-              commit('REMOVE_FROM_CART', product);
+              commit('DELETE_FROM_CART', product);
             }
           });
       }

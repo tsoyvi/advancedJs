@@ -74,7 +74,7 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
-import Shopping from './blocks/Shopping.vue';
+import Shopping from './blocks/ShoppingRow.vue';
 
 export default {
   components: {

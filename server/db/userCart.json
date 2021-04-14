@@ -1,15 +1,40 @@
 [
     {
-        "id_product": 124,
-        "product_name": "Куртка People T-shirt",
+        "id_product": 457,
+        "product_name": "Кабзон People T-shirt",
         "brend": "Floral",
-        "price": 100,
-        "img": "Image_placeholder_1.png",
-        "size": "XS",
+        "price": 325.6,
+        "img": "Image_placeholder_2.png",
+        "size": "M",
+        "material": "cotton",
+        "color": "red",
+        "rating": 5,
+        "quantity": 1
+    },
+    {
+        "id_product": 456,
+        "product_name": "толстовка People T-shirt",
+        "brend": "Floral",
+        "price": 34.32,
+        "img": "Image_placeholder_5.png",
+        "size": "M",
         "gender": "male",
         "material": "polyester",
         "color": "red",
+        "rating": 3.5,
+        "quantity": 1
+    },
+    {
+        "id_product": 3156,
+        "product_name": "BLAZE LEGGINGS",
+        "brend": "Lace",
+        "price": 41.01,
+        "img": "Layer_44.png",
+        "size": "XXS",
+        "gender": "female",
+        "material": "polyester",
+        "color": "red",
         "rating": 4.5,
-        "quantity": 5
+        "quantity": 2
     }
 ]

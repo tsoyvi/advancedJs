@@ -26,6 +26,7 @@ export default {
   },
 
   async deleteJson(url, data) {
+    // console.log(data);
     return axios.delete(url, data)
       .then((response) => response.data)
       .catch((error) => {
