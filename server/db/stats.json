@@ -1,0 +1,32 @@
+[
+    {
+        "time": "14 Apr 2021, 10:19:31 pm",
+        "prod_name": "Куртка People T-shirt",
+        "action": "del"
+    },
+    {
+        "time": "14 Apr 2021, 10:25:24 pm",
+        "prod_name": "Кабзон People T-shirt",
+        "action": "change"
+    },
+    {
+        "time": "14 Apr 2021, 10:25:27 pm",
+        "prod_name": "Кабзон People T-shirt",
+        "action": "change"
+    },
+    {
+        "time": "14 Apr 2021, 10:25:37 pm",
+        "prod_name": "толстовка People T-shirt",
+        "action": "add"
+    },
+    {
+        "time": "14 Apr 2021, 10:25:53 pm",
+        "prod_name": "BLAZE LEGGINGS",
+        "action": "add"
+    },
+    {
+        "time": "14 Apr 2021, 10:25:59 pm",
+        "prod_name": "BLAZE LEGGINGS",
+        "action": "change"
+    }
+]

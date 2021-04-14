@@ -1,0 +1,353 @@
+/****/
+
+.breadcrumbs {
+    background-color: #f8f3f4;
+}
+
+.breadcrumbs-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 148px;
+}
+
+.breadcrumbs-page-name {
+    font-size: 24px;
+    font-weight: bold;
+    color:$magenta_color;
+    text-transform: uppercase;
+}
+
+.breadcrumbs-ul > li {
+    display: inline-block;
+}
+
+.breadcrumbs-ul > li:nth-child(n+2)::before {
+    content: " / ";
+}
+
+.breadcrumbs-ul li {
+    list-style: none;
+    font-size: 14px;
+    color: #636363;
+    text-transform: uppercase;
+}
+
+.breadcrumbs-ul li:last-child {
+    font-weight: bold;
+    color:$magenta_color;
+}
+
+.breadcrumbs-link {
+    font-size: inherit;
+    color: inherit;
+    text-decoration: none;
+    text-transform: inherit;
+    font-weight: inherit;
+}
+
+
+.product {
+    display: flex;
+}
+
+.aside {
+    width: 320px;
+    /*outline: #c4c4c4 solid 1px;*/
+}
+
+.aside-menu {
+    outline: none;
+    margin-bottom: 25px;
+}
+
+.aside-menu-title {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: bold;
+    color: #ef5b70;
+    cursor: pointer;
+    outline: none;
+    
+    border-left: 5px solid #ef5b70;
+    border-bottom: 1px solid  #ebebeb;
+   
+    padding: 10px 6px 10px 11px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.aside-menu[open] .aside-menu-title::after {
+    content: "\f0d8";
+    font-family: FontAwesome;
+    color: #ef5b70;
+}
+
+.aside-menu-title::after {
+    content: "\f0d7"; 
+    font-family: FontAwesome;
+    color: #6f6e6e;
+}
+
+.aside-menu-title::-webkit-details-marker {
+    display: none;
+}
+
+.aside-menu > ul {
+    list-style: none;
+}
+
+.aside-menu > ul > li {
+    margin-top: 10px;
+    margin-left: 15px;
+}
+
+.aside-menu-link {
+    font-size: 14px;
+    color: #6f6e6e;
+    text-decoration: none;
+}
+
+
+.option-selected {
+    margin-left: 55px;
+    width: 100%;
+}
+
+
+.product-filter {
+    display: flex;
+    justify-content: center;
+}
+
+.selector {
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    list-style-type: none;
+    color: #6f6e6e;
+    width: 280px;
+    /*outline: blue solid 1px;*/
+}
+
+.selector-header {
+    margin-bottom: 10px;
+}
+
+.option-selected > ul {
+    width: 846px;
+    list-style-type: none;
+    display: flex; 
+    justify-content: space-between; 
+}
+
+.selector-trending {
+    width: 176px;
+}
+
+.selector-trending-button {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.selector-trending-button > div:nth-child(n+2)::before {
+    content: "|";
+    margin-right: 10px;
+    color: #dfdfdf;
+}
+
+
+.selector-size {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 5px;
+    margin-right: 40px;
+}
+
+.selector-size > label {
+    font-family: OpenSans;
+} 
+
+
+.trending-now-select {
+    font-size: 14px;
+    line-height: 1.86;
+    color: #6f6e6e;
+    border: none;
+}
+
+/* выбора цены */
+
+
+.selector-price-numbers {
+    font-size: 14px;
+    margin: 15px 5px 0px 5px;
+    color: #6f6e6e;
+    font-family: OpenSans;
+}
+
+.selector-price {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+   align-content: space-between;
+   min-height: 30px;
+}
+
+.range-slider{
+    width: 100%;
+    margin: auto;
+    text-align: center;
+    position: relative;
+    margin-top: 22px;
+  }
+  
+  input[type=range] {
+    -webkit-appearance: none;
+  }
+  
+  input[type=range]:focus {
+    outline: none;
+  }
+  
+  .range-slider svg, .range-slider input[type=range] {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  input[type=range]::-webkit-slider-runnable-track {
+    cursor: pointer;
+    background: #eee;
+    height: 6px;
+  }
+  
+  input[type=range]::-webkit-slider-thumb {
+    z-index: 1;
+    position: relative;
+    top: 1px;
+    margin-top: -5px;
+    height: 15px;
+    width: 15px;
+    border-radius: 15px;
+    background: #f16d7f;
+    cursor: pointer;
+    -webkit-appearance: none;
+  }
+/* ***************************  */
+
+
+
+.sort-block {
+    width: 100%;
+    height: 50px;
+    background-color: #f3f3f3;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+    margin-top: 40px;
+}
+
+.sort-block-nested {
+    display: flex;
+    justify-self: start;
+    margin-left: 7px;
+}
+
+
+.sort-block-nested-label {
+    margin: 0px; 
+    padding: 5px 9px 6px 13px;
+    /*outline:  #ebebeb solid 1px;*/
+    border: 1px solid #ebebeb;
+    background-color: #ffffff;
+    font-size: 14px;
+    color: #6f6e6e;
+
+}
+
+.sort-block-sort-by {
+    font-size: 14px;
+    color: #6f6e6e;
+    font-family: 'Lato', Arial, sans-serif;
+    height: 30px;
+    margin: 0px 10px 0px -1px;
+    border: 1px solid #ebebeb;
+    background-color: #ffffff;
+    padding: 0px 30px 0px 10px;
+}
+
+
+.product-navigation-bottom {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 43px;
+}
+
+.list-pages-block {
+    width: 261px;
+    height: 44px;
+   
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 3px;
+    border: solid 1px #ebebeb;
+    background-color: #ffffff;
+}
+
+.list-pages-links {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    color: #c4c4c4;
+    border: none;
+}
+
+.list-pages-links-active {
+    color: #ef5b70;
+    
+}
+
+
+.list-pages-links:hover {
+    color: #ef5b70;
+}
+
+.button-style-transporent {
+
+    font-size: 16px;
+    font-weight: bold;
+    color: #ef5b70;
+    padding: 10px 45px 10px 45px;
+    border-radius: 3px;
+    border: solid 1px #ef5b70;
+    background-color: #ffffff;
+    /*border: none;*/
+    cursor: pointer;
+}
+
+
+.dignity {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 341px;
+    text-align: center;
+
+}
+
+.dignity-blocks {
+    height: 140px;
+    width: 309px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+}
+
+/*  ****  */
